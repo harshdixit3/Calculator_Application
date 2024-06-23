@@ -21,23 +21,47 @@ function addClickListener(){
 
 function handleGenericEvent(e){
   
-    // console.log("Button Clicked" + e)
+//    console.log("Button Clicked" + e)
    const divButtonTarget = e.target
    const text = divButtonTarget.innerText;
 
    if(text == "CLEAR"){
+     console.log("CLEAR BUTTON")
     handleClear(e);
    }else if (text == "BACKSPACE"){
+        console.log("BACKSPACE BUTTON")
     handleBackspace(e);
    }else if (text == "="){
+    console.log("= BUTTON")
     handleEquals(e);
    }else{
-    //TODO
+    // numbers
+    appendDisplayPanel(e);
    }
 
 }
 
-function handleNumber(e){
+function appendDisplayPanel(e){
+    //existing Content
+    const ioPanel = document.getElementById("ioPanel");
+   
+     const A = ioPanel.innerText;
+   
+    // user typed / Clicked content
+
+    const divButtonTarget = e.target
+    const B = divButtonTarget.innerText;
+
+    const finalText = A + B ;
+
+    setIOPanelText()
+
+    ioPanel.innerText = finalText; 
+    
+    
+    // 
+
+
 
 }
 
@@ -46,6 +70,8 @@ function handleOprators(e){
 }
 
 function handleClear(e){
+   
+    setIOPanelText("")
 
 }
 
@@ -68,6 +94,11 @@ function handleDot(e){
 
 }
 
+function setIOPanelText(text){
+    const ioPanel =  document.getElementById("ioPanel");
+    ioPanel.innerText = text;
+
+}
 
 function main(){
     addClickListener();
