@@ -56,12 +56,6 @@ function appendDisplayPanel(e){
 
     setIOPanelText(finalText);
 
-    
-    
-    // 
-
-
-
 }
 
 function handleOprators(e){
@@ -79,6 +73,12 @@ function handleBackspace(e){
     const ioPanelText = getIOPanelText();
 
     if (ioPanelText.length  != 0){
+        // 78
+
+        const tempText= ioPanelText.substring(0 , ioPanelText.length - 1)
+        console.log("After Backspace ->" + tempText)
+
+        setIOPanelText(tempText);
 
     }else {
         console.log("No text present in IOPanel")
@@ -93,6 +93,23 @@ function handleParanthesis(e){
 
 
 function handleEquals(e){
+
+    const ioPanelText = getIOPanelText();
+
+    if ( ioPanelText == ""){
+
+        console.log("No value Entered")
+
+    }else{
+        try{
+            const outcome = eval(ioPanelText)
+            setIOPanelText(outcome)
+        }catch{
+            setIOPanelText("Invalid Expression ["+ ioPanelText +"]")
+        }
+      
+        
+    }
 
 }
 
