@@ -43,9 +43,9 @@ function handleGenericEvent(e){
 
 function appendDisplayPanel(e){
     //existing Content
-    const ioPanel = document.getElementById("ioPanel");
    
-     const A = ioPanel.innerText;
+
+    const A = getIOPanelText();
    
     // user typed / Clicked content
 
@@ -54,9 +54,8 @@ function appendDisplayPanel(e){
 
     const finalText = A + B ;
 
-    setIOPanelText()
+    setIOPanelText(finalText);
 
-    ioPanel.innerText = finalText; 
     
     
     // 
@@ -77,6 +76,13 @@ function handleClear(e){
 
 
 function handleBackspace(e){
+    const ioPanelText = getIOPanelText();
+
+    if (ioPanelText.length  != 0){
+
+    }else {
+        console.log("No text present in IOPanel")
+    }
 
 }
 
@@ -97,6 +103,15 @@ function handleDot(e){
 function setIOPanelText(text){
     const ioPanel =  document.getElementById("ioPanel");
     ioPanel.innerText = text;
+
+}
+
+function getIOPanelText(){
+
+    const ioPanel = document.getElementById("ioPanel");
+    const text = ioPanel.innerText
+
+    return text;
 
 }
 
